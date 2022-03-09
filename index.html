@@ -27,8 +27,6 @@
           messagingSenderId: "89805570094",
           appId: "1:89805570094:web:b4634ef2dc6adb52ec1fbf"
         };
-
-        
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
@@ -37,8 +35,9 @@
         const querySnapshot = await getDocs(collection(db, "students"));
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
-            //console.log("buscando")
+            console.log("buscando");
         });
+        //console.log(querySnapshot);
 
       </script>
 </body>
