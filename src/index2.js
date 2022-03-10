@@ -1,17 +1,20 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Initialize Cloud Firestore through Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyANxThXkZr5Kl0qVZ4OuWntWQKq8eDdbRE",
-  authDomain: "students2-d3265.firebaseapp.com",
-  projectId: "students2-d3265",
-  storageBucket: "students2-d3265.appspot.com",
-  messagingSenderId: "89805570094",
-  appId: "1:89805570094:web:b4634ef2dc6adb52ec1fbf"
-};
+const firebaseApp = initializeApp({
+    apiKey: "AIzaSyANxThXkZr5Kl0qVZ4OuWntWQKq8eDdbRE",
+    authDomain: "students2-d3265.firebaseapp.com",
+    projectId: "students2-d3265",
+  });
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
+const querySnapshot = await getDocs(collection(db, "users.snapshot"));
+
+// querySnapshot.forEach((doc) => {
+//   console.log(`${doc.id} => ${doc.data()}`);
+// });
+
+console.log(querySnapshot)
